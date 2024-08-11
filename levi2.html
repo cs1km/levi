@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Picture Maker</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('space.jpg');
+            background-size: cover;
+            color: white;
+            display: flex;
+            flex-direction: column; /* Arrange items vertically */
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .header {
+            font-size: 50px; /* Set font size to 50px */
+            font-weight: bold;
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 30px; /* Space between the header and the container */
+            color: #fff; /* White color for the text */
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8), 0 2px 10px rgba(255, 255, 255, 0.8); /* Glowing and 3D effect */
+            transform: perspective(500px) rotateX(10deg) scaleY(1.2); /* Add perspective, rotation, and vertical stretch */
+            transform-style: preserve-3d; /* Preserve 3D transformations */
+            margin-top: 20px; /* Adjust top margin to ensure text stays centered */
+        }
+
+        .container {
+            display: flex;
+            gap: 30px;
+            padding: 30px;
+            border-radius: 15px;
+            background-color: rgba(0, 0, 0, 0.7); /* Black background with 70% transparency */
+            backdrop-filter: blur(10px); /* Apply blur effect to the background */
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+        }
+
+        .preview {
+            position: relative;
+            width: 450px;
+            height: 450px;
+            background-color: #000;
+            border-radius: 25px;
+            overflow: hidden;
+            border: 5px solid #444;
+        }
+
+        .preview img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            top: 0;
+            left: 0;
+        }
+
+        .controls {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .control-group span {
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .options {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto; /* Allow horizontal scrolling if needed */
+            white-space: nowrap; /* Keep images in a single line */
+            padding: 5px; /* Add some padding to prevent cropping */
+        }
+
+        .control-group img {
+            width: 70px;
+            height: 70px;
+            cursor: pointer;
+            border-radius: 10px;
+            border: 2px solid transparent;
+            transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+            object-fit: contain; /* Ensure images fit nicely without cropping */
+            display: block; /* Prevent extra space below images */
+        }
+
+        .control-group img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 10px 3px rgba(200, 200, 200, 0.8); /* White glow effect */
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+            justify-content: center;
+        }
+
+        .buttons button {
+            padding: 12px 25px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #555;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .buttons button:hover {
+            background-color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">LEVI PFP MAKER</div>
+    <div class="container">
+        <div class="preview">
+            <img id="overlay-background" src="" alt="Overlay Background">
+            <img id="base-image" src="levi.png" alt="Base Image">
+            <img id="overlay-props" src="" alt="Overlay Props">
+            <img id="overlay-eyewear" src="" alt="Overlay Eyewear">
+            <img id="overlay-head" src="" alt="Overlay Head">
+        </div>
+        <div class="controls">
+            <!-- Head Control Group -->
+            <div class="control-group">
+                <span>Head</span>
+                <div class="options">
+                    <img src="mcdo.png" alt="Head 1" onclick="changeOverlay('head', 'mcdo.png')">
+                    <img src="naruto.png" alt="Head 2" onclick="changeOverlay('head', 'naruto.png')">
+                    <img src="habibi.png" alt="Head 3" onclick="changeOverlay('head', 'habibi.png')">
+                    <img src="wiff.png" alt="Head 4" onclick="changeOverlay('head', 'wiff.png')">
+                    <img src="xxx.png" alt="Head 5" onclick="changeOverlay('head', 'xxx.png')">
+                    <img src="batman.png" alt="Head 6" onclick="changeOverlay('head', 'batman.png')">
+                    <img src="gojo.png" alt="Head 7" onclick="changeOverlay('head', 'gojo.png')">
+                </div>
+            </div>
+
+            <!-- Eyewear Control Group -->
+            <div class="control-group">
+                <span>Face</span>
+                <div class="options">
+                          <img src="cig.png" alt="Face 1" onclick="changeOverlay('eyewear', 'cig.png')">
+        <img src="blush.png" alt="Face 2" onclick="changeOverlay('eyewear', 'blush.png')">
+        <img src="mog.png" alt="Face 3" onclick="changeOverlay('eyewear', 'mog.png')">
+        <img src="red.png" alt="Face 4" onclick="changeOverlay('eyewear', 'red.png')">
+        <img src="retardio.png" alt="Face 5" onclick="changeOverlay('eyewear', 'retardio.png')">
+        <img src="face mask.png" alt="Face 6" onclick="changeOverlay('eyewear', 'face mask.png')">
+        <img src="thug.png" alt="Face 7" onclick="changeOverlay('eyewear', 'thug.png')">
+                </div>
+            </div>
+
+            <!-- Props Control Group -->
+            <div class="control-group">
+                <span>Props</span>
+                <div class="options">
+                    <img src="spacecraft1.png" alt="Prop 1" onclick="changeOverlay('props', 'spacecraft1.png')">
+                    <img src="spacecraft2.png" alt="Prop 2" onclick="changeOverlay('props', 'spacecraft2.png')">
+                    <img src="spacecraft3.png" alt="Prop 3" onclick="changeOverlay('props', 'spacecraft3.png')">
+                    <img src="spacecraft4.png" alt="Prop 4" onclick="changeOverlay('props', 'spacecraft4.png')">
+                    <img src="spacecraft5.png" alt="Prop 5" onclick="changeOverlay('props', 'spacecraft5.png')">
+                </div>
+            </div>
+
+            <!-- Background Control Group -->
+            <div class="control-group">
+                <span>Background</span>
+                <div class="options">
+                    <img src="earth moon.jpg" alt="Background 1" onclick="changeOverlay('background', 'earth moon.jpg')">
+                    <img src="red space.jpg" alt="Background 2" onclick="changeOverlay('background', 'red space.jpg')">
+                    <img src="got.png" alt="Background 3" onclick="changeOverlay('background', 'got.png')">
+                    <img src="heaven.png" alt="Background 4" onclick="changeOverlay('background', 'heaven.png')">
+                    <img src="mug.png" alt="Background 5" onclick="changeOverlay('background', 'mug.png')">
+                </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="buttons">
+                <button onclick="resetOverlays()">Reset</button>
+                <button onclick="downloadImage()">Download</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function changeOverlay(type, src) {
+            document.getElementById('overlay-' + type).src = src;
+        }
+
+        function resetOverlays() {
+            document.getElementById('overlay-head').src = '';
+            document.getElementById('overlay-eyewear').src = '';
+            document.getElementById('overlay-props').src = '';
+            document.getElementById('overlay-background').src = '';
+        }
+
+        function downloadImage() {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            const baseImage = document.getElementById('base-image');
+            const head = document.getElementById('overlay-head');
+            const eyewear = document.getElementById('overlay-eyewear');
+            const props = document.getElementById('overlay-props');
+            const background = document.getElementById('overlay-background');
+
+            canvas.width = baseImage.width;
+            canvas.height = baseImage.height;
+
+            // Draw the images in the correct order
+            function drawImages() {
+                // Draw the background first
+                if (background.src) {
+                    ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
+                }
+
+                // Draw the base image
+                ctx.drawImage(baseImage, 0, 0, canvas.width, canvas.height);
+
+                // Draw the overlays
+                if (props.src) {
+                    ctx.drawImage(props, 0, 0, canvas.width, canvas.height);
+                }
+                if (eyewear.src) {
+                    ctx.drawImage(eyewear, 0, 0, canvas.width, canvas.height);
+                }
+                if (head.src) {
+                    ctx.drawImage(head, 0, 0, canvas.width, canvas.height);
+                }
+
+                // Create a link and download the image
+                const link = document.createElement('a');
+                link.download = 'profile-picture.jpg'; // Update file extension to .jpg
+                link.href = canvas.toDataURL('image/jpeg'); // Set MIME type to image/jpeg
+                link.click();
+            }
+
+            // Handle image loading
+            const images = [baseImage, background, props, eyewear, head];
+            let loadedImages = 0;
+
+            images.forEach(img => {
+                if (img.complete) {
+                    loadedImages++;
+                    if (loadedImages === images.length) {
+                        drawImages();
+                    }
+                } else {
+                    img.onload = () => {
+                        loadedImages++;
+                        if (loadedImages === images.length) {
+                            drawImages();
+                        }
+                    };
+                }
+            });
+        }
+    </script>
+</body>
+</html>
